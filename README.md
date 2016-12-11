@@ -13,7 +13,7 @@ Then you can publish it to GitHub Pages!
 
 First, fork this repo. Then clone it locally and run:
 
-    ./do-it-for-the-vine.sh
+    ./did-it-for-the-vine.sh
 
 It will prompt you for your Vine username and password then download your vines
 and make a blog post for each one. If you need to stop it or anything goes

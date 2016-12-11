@@ -2,11 +2,11 @@
 
 # Usage:
 #
-#   ./do-it-for-the-vine.sh VINE_USERNAME VINE_PASSWORD
+#   ./did-it-for-the-vine.sh VINE_USERNAME VINE_PASSWORD
 #
 # You can also run it as
 #
-#   ./do-it-for-the-vine.sh
+#   ./did-it-for-the-vine.sh
 #
 # and it will prompt for your username/password.
 #
