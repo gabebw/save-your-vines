@@ -75,9 +75,9 @@ date: "#{created_at.strftime("%Y-%m-%d %H:%M:%S %z")}"
 layout: post
 ---
 
-<p>Vine by #{json[:username]}</p>
-
 #{video_tag(json, mp4_src, webm_src)}
+
+<p>Vine by #{json[:username]}</p>
 EOF
 end
 
