@@ -7,8 +7,6 @@ require "time"
 
 JEKYLL_DIRECTORY = "./docs"
 VINES_DIRECTORY = "#{JEKYLL_DIRECTORY}/vines"
-FileUtils.mkdir_p(VINES_DIRECTORY)
-FileUtils.mkdir_p("#{JEKYLL_DIRECTORY}/_posts")
 
 def presence(s)
   if s == "" || s.nil?
