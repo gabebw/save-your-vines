@@ -25,7 +25,10 @@ if [ ! -f likes.json ]; then
     vine_password=$2
   fi
 
-  ./liked-vines.rb "$vine_username" "$vine_password" > likes.json
+  if ! ./liked-vines.rb "$vine_username" "$vine_password" > likes.json; then
+    rm likes.json
+    exit 1
+  fi
 fi
 
 ./download-and-make-blog-posts.rb likes.json

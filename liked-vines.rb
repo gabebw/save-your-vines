@@ -41,7 +41,7 @@ def sign_in(username, password)
     "password" => password,
   )
   if json[:error] != ""
-    puts "Your username or password is wrong; please double-check"
+    STDERR.puts "Your username or password is wrong; please double-check and run this script again"
     exit 1
   end
   json[:data][:key]
