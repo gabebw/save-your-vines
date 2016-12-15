@@ -35,3 +35,10 @@ wrong, you can safely run the script again. It will pick up where it left off.
 1. Wait a minute or two then reload the page. In the "GitHub Pages" section
    you'll see a green message with a link to your new blog.
 1. You're done!
+
+## Adding new lines
+
+If you've liked some Vines since running this script, run the script again and
+it will create posts for only those new Vines:
+
+    ./did-it-for-the-vine.sh

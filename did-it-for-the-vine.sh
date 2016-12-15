@@ -10,25 +10,38 @@
 #
 # and it will prompt for your username/password.
 #
-# You can re-run it at any time and it will pick up where it left off.
+# After entering your username once, it won't ask again.
 
 set -eo pipefail
 
-if [ ! -f likes.json ]; then
+set_vine_username_and_password(){
   if [ -z "$1" ] || [ -z "$2" ]; then
-    printf "What is your Vine username? "
-    read -r vine_username
-    printf "What is your Vine password? "
-    read -r vine_password
+    if [ -f .vine-credentials ]; then
+      vine_username=$(head -1 .vine-credentials)
+      vine_password=$(tail -1 .vine-credentials)
+    else
+      read -rp "What is your Vine username? " vine_username
+      read -rp "What is your Vine password? " vine_password
+    fi
   else
     vine_username=$1
     vine_password=$2
   fi
+}
 
-  if ! ./liked-vines.rb "$vine_username" "$vine_password" > likes.json; then
-    rm likes.json
-    exit 1
-  fi
+set_vine_username_and_password "$@"
+echo "$vine_username" > .vine-credentials
+echo "$vine_password" >> .vine-credentials
+
+# likes-vines.rb reads likes.json, so we can't write to it or it'll end up empty
+# Fun fact: situations like this are exactly why `sponge` exists. It's available
+# here: https://joeyh.name/code/moreutils/
+# I won't use it though, because I want this to work out of the box.
+if ./liked-vines.rb "$vine_username" "$vine_password" > newlikes.json; then
+  mv newlikes.json likes.json
+else
+  rm newlikes.json
+  exit 1
 fi
 
 ./download-and-make-blog-posts.rb likes.json

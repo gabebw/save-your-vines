@@ -8,31 +8,23 @@ require "time"
 JEKYLL_DIRECTORY = "./docs"
 VINES_DIRECTORY = "#{JEKYLL_DIRECTORY}/vines"
 
-def presence(s)
+def presence(s, fallback)
   if s == "" || s.nil?
-    nil
+    fallback
   else
     s
   end
 end
 
 def normalize_title(title)
-  new_title = title.gsub("/", "-slash-")
-  if new_title !~ /\w/
-    # GitHub Pages removes emoji from the post title.
-    # When the post title only contains emoji, that leads to a path like
-    # `/2016/01/09/.html`, and your browser saves an HTML file rather than
-    # rendering it. To prevent this, add the word "emoji", which won't get
-    # removed by GH Pages.
-    new_title += "emoji"
-  end
-  new_title
+  title.gsub("/", "%2F")
 end
 
 def download_and_make_blog_post(json)
   vine_id = File.basename(json[:vine_url])
   directory = "#{VINES_DIRECTORY}/#{vine_id}"
-  title = presence(json[:description]) || "[No title]"
+  description = presence(json[:description], "[No title]")
+  title = "#{description} by #{json[:username]}"
   puts "Downloading and creating blog post for #{json[:vine_url]} (#{title})"
 
   FileUtils.mkdir_p(directory)

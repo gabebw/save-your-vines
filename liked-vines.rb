@@ -42,12 +42,13 @@ def sign_in(username, password)
   )
   if json[:error] != ""
     STDERR.puts "Your username or password is wrong; please double-check and run this script again"
+    File.unlink(".vine-credentials")
     exit 1
   end
   json[:data][:key]
 end
 
-def get_likes(session_id, page_number = 1)
+def get_likes(session_id, max_pages, page_number = 1)
   STDERR.puts "Getting likes (page #{page_number})"
   url = "https://api.vineapp.com/timelines/users/me/likes"
 
@@ -64,8 +65,8 @@ def get_likes(session_id, page_number = 1)
     }
   end
 
-  if json[:data][:nextPage]
-    likes += get_likes(session_id, page_number + 1)
+  if json[:data][:nextPage] && page_number < max_pages
+    likes += get_likes(session_id, max_pages, page_number + 1)
   end
 
   likes
@@ -75,5 +76,13 @@ vine_username = ARGV[0].chomp
 vine_password = ARGV[1].chomp
 
 session_id = sign_in(vine_username, vine_password)
-all_likes = get_likes(session_id)
-puts JSON.dump(all_likes)
+if File.exist?("likes.json")
+  # We're adding new likes, not getting all of them, so just get the first few
+  # pages
+  existing = parse(File.read("likes.json"))
+  all_likes = existing | get_likes(session_id, 5)
+else
+  all_likes = get_likes(session_id, 1000)
+end
+
+puts JSON.pretty_generate(all_likes)
