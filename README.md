@@ -30,8 +30,11 @@ wrong, you can safely run the script again. It will pick up where it left off.
    links won't work on GitHub. If you didn't rename the repo, skip this step.
 1. Commit your changes to Git.
 1. Push to GitHub, which will take at least 10 minutes.
-1. Visit this repo's settings page and scroll down to the "GitHub Pages"
+1. Visit your repo's settings page and scroll down to the "GitHub Pages"
    section. Select "master branch /docs folder" as the source and save.
+
+   ![](https://cloud.githubusercontent.com/assets/257678/21215014/4badb86e-c253-11e6-9ee8-ae7a00b2965d.png)
+
 1. Wait a minute or two then reload the page. In the "GitHub Pages" section
    you'll see a green message with a link to your new blog.
 1. You're done!
