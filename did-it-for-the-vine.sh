@@ -16,8 +16,10 @@ set -eo pipefail
 
 if [ ! -f likes.json ]; then
   if [ -z "$1" ] || [ -z "$2" ]; then
-    read -r "What is your Vine username? " vine_username
-    read -r "What is your Vine password? " vine_password
+    printf "What is your Vine username? "
+    read -r vine_username
+    printf "What is your Vine password? "
+    read -r vine_password
   else
     vine_username=$1
     vine_password=$2
