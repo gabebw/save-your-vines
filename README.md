@@ -44,7 +44,10 @@ wrong, you can safely run the script again. It will pick up where it left off.
 
 ## Adding new lines
 
-If you've liked some Vines since running this script, run the script again and
-it will create posts for only those new Vines:
+If you've liked some Vines since you last ran the script, run the script again
+and it will create posts for only those new Vines:
 
     ./did-it-for-the-vine.sh
+
+You can run it as often as you want! And best of all, it won't keep asking for
+your password.
