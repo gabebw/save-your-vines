@@ -27,7 +27,7 @@ wrong, you can safely run the script again. It will pick up where it left off.
    though!
 1. If you renamed the repo to something other than `save-your-vines`, then
    change `baseurl` in `docs/_config.yml` to your new repo name, otherwise the
-   links won't work on GitHub.
+   links won't work on GitHub. If you didn't rename the repo, skip this step.
 1. Commit your changes to Git.
 1. Push to GitHub, which will take at least 10 minutes.
 1. Visit this repo's settings page and scroll down to the "GitHub Pages"
