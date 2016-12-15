@@ -80,7 +80,8 @@ if File.exist?("likes.json")
   # We're adding new likes, not getting all of them, so just get the first few
   # pages
   existing = parse(File.read("likes.json"))
-  all_likes = existing | get_likes(session_id, 5)
+  new = get_likes(session_id, 5)
+  all_likes = (existing + new).uniq { |json| json[:vine_url] }
 else
   all_likes = get_likes(session_id, 1000)
 end
