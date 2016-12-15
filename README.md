@@ -37,6 +37,9 @@ wrong, you can safely run the script again. It will pick up where it left off.
 
 1. Wait a minute or two then reload the page. In the "GitHub Pages" section
    you'll see a green message with a link to your new blog.
+
+   ![](https://cloud.githubusercontent.com/assets/257678/21215388/c86a17ce-c255-11e6-9a46-ef5439d62ee1.png)
+
 1. You're done!
 
 ## Adding new lines
