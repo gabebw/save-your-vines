@@ -67,7 +67,7 @@ layout: post
 
 #{video_tag(json, mp4_src, webm_src)}
 
-<p>Vine by #{json[:username]}</p>
+<p><a href="#{json[:vine_url]}">Original Vine</a> by #{json[:username]}</p>
 EOF
 end
 
